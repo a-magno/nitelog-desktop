@@ -1,24 +1,34 @@
 extends Node
 
-const CFG_FILE: String = "user://nitelog.cfg"
+const CFG_FILE: String = "res://nitelog.cfg"
 
 var config: ConfigFile
 var settings: Dictionary
+
 
 func _ready() -> void:
 	config = ConfigFile.new()
 
 	if not FileAccess.file_exists(CFG_FILE):
-		return
+		config.set_value(
+			"config", "url-web", "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+		)
+		config.set_value("config", "url-api", "")
+		config.set_value("config", "url-websocket", "")
+		config.set_value("config", "qr_timeout", 90)
+		config.save(CFG_FILE)
 
 	var err := config.load(CFG_FILE)
 	if err != OK:
 		return
 
 	var keys: PackedStringArray = config.get_section_keys("config")
-	if keys.is_empty(): 
+	if keys.is_empty():
 		# Rename broken config
-		var broken_name: String = "user://nitelog.%s.cfg.broken" % Time.get_datetime_string_from_system()
+		var broken_name: String = (
+			"user://nitelog.%s.cfg.broken"
+			% Time.get_datetime_string_from_system()
+		)
 		DirAccess.rename_absolute(CFG_FILE, broken_name)
 
 		return
