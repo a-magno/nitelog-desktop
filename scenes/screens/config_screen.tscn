@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ooiq0s8kor6o"]
+[gd_scene load_steps=3 format=3 uid="uid://ooiq0s8kor6o"]
 
-[ext_resource type="Script" path="res://src/url_input.gd" id="1_16rtg"]
-[ext_resource type="Script" path="res://src/timeout_label.gd" id="1_at70x"]
 [ext_resource type="Script" path="res://src/transition_button.gd" id="1_hr42k"]
-[ext_resource type="Script" path="res://src/timeout_slider.gd" id="2_gh8c5"]
+[ext_resource type="Script" path="res://src/config_screen.gd" id="1_ll1g6"]
 
 [node name="ConfigScreen" type="Control"]
 layout_mode = 3
@@ -12,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ll1g6")
 
 [node name="ConfigLabel" type="Label" parent="."]
 layout_mode = 1
@@ -40,11 +39,11 @@ size_flags_vertical = 6
 text = "URL Web"
 
 [node name="WebInput" type="LineEdit" parent="GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.2
-script = ExtResource("1_16rtg")
 
 [node name="APILabel" type="Label" parent="GridContainer"]
 layout_mode = 2
@@ -53,11 +52,11 @@ size_flags_vertical = 6
 text = "URL API"
 
 [node name="APIInput" type="LineEdit" parent="GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.2
-script = ExtResource("1_16rtg")
 
 [node name="WebsocketLabel" type="Label" parent="GridContainer"]
 layout_mode = 2
@@ -66,11 +65,11 @@ size_flags_vertical = 6
 text = "URL Websocket QR"
 
 [node name="WebsocketInput" type="LineEdit" parent="GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.2
-script = ExtResource("1_16rtg")
 
 [node name="HSeparator" type="HSeparator" parent="GridContainer"]
 layout_mode = 2
@@ -89,6 +88,7 @@ text = "QR Code Timeout"
 layout_mode = 2
 
 [node name="TimeoutSlider" type="HSlider" parent="GridContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -96,15 +96,13 @@ min_value = 10.0
 max_value = 180.0
 step = 10.0
 value = 10.0
-script = ExtResource("2_gh8c5")
 
-[node name="TimeoutLabel" type="Label" parent="GridContainer/HBoxContainer" node_paths=PackedStringArray("slider")]
+[node name="TimeoutLabel" type="Label" parent="GridContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 text = "180 Segundos"
 horizontal_alignment = 2
-script = ExtResource("1_at70x")
-slider = NodePath("../TimeoutSlider")
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0

@@ -16,7 +16,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Config="*res://scenes/globals/config.tscn"
+CfgFile="*res://scenes/globals/config_file.tscn"
 
 [debug]
 
