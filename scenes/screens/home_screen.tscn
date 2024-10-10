@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dev45828nlpj"]
+[gd_scene load_steps=2 format=3 uid="uid://dev45828nlpj"]
+
+[ext_resource type="Script" path="res://src/transition_button.gd" id="1_ot8i7"]
 
 [node name="HomeScreen" type="Control"]
 layout_mode = 3
@@ -44,6 +46,8 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 28
 text = "Configurações"
+script = ExtResource("1_ot8i7")
+new_scene = "uid://ooiq0s8kor6o"
 
 [node name="ExitButton" type="Button" parent="."]
 layout_mode = 0

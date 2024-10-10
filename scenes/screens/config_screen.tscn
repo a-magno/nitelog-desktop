@@ -1,4 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ooiq0s8kor6o"]
+[gd_scene load_steps=5 format=3 uid="uid://ooiq0s8kor6o"]
+
+[ext_resource type="Script" path="res://src/url_input.gd" id="1_16rtg"]
+[ext_resource type="Script" path="res://src/timeout_label.gd" id="1_at70x"]
+[ext_resource type="Script" path="res://src/transition_button.gd" id="1_hr42k"]
+[ext_resource type="Script" path="res://src/timeout_slider.gd" id="2_gh8c5"]
 
 [node name="ConfigScreen" type="Control"]
 layout_mode = 3
@@ -39,6 +44,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.2
+script = ExtResource("1_16rtg")
 
 [node name="APILabel" type="Label" parent="GridContainer"]
 layout_mode = 2
@@ -51,6 +57,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.2
+script = ExtResource("1_16rtg")
 
 [node name="WebsocketLabel" type="Label" parent="GridContainer"]
 layout_mode = 2
@@ -63,6 +70,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.2
+script = ExtResource("1_16rtg")
 
 [node name="HSeparator" type="HSeparator" parent="GridContainer"]
 layout_mode = 2
@@ -88,12 +96,14 @@ min_value = 10.0
 max_value = 180.0
 step = 10.0
 value = 10.0
+script = ExtResource("2_gh8c5")
 
 [node name="TimeoutLabel" type="Label" parent="GridContainer/HBoxContainer" node_paths=PackedStringArray("slider")]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "180 Segundos"
 horizontal_alignment = 2
+script = ExtResource("1_at70x")
 slider = NodePath("../TimeoutSlider")
 
 [node name="BackButton" type="Button" parent="."]
@@ -103,4 +113,6 @@ offset_top = 584.0
 offset_right = 98.0
 offset_bottom = 626.0
 theme_override_font_sizes/font_size = 24
-text = "Voltar"
+text = " Voltar "
+script = ExtResource("1_hr42k")
+new_scene = "uid://dev45828nlpj"
