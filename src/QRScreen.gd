@@ -35,6 +35,7 @@ func _on_http_request_request_completed(
 	var json := JSON.new()
 	var error: Error = json.parse(body.get_string_from_utf8())
 	var response_data: Variant = json.get_data()
+	print(response_data)
 
 	var meeting_id: int
 	if response_code == HTTPClient.RESPONSE_CREATED:
