@@ -5,11 +5,13 @@ func _ready() -> void:
 	%QRHTTPRequest.request_completed.connect(_on_http_request_request_completed)
 	%OpenLoginButton.toggled.connect(_on_open_login_toggled)
 
-	var url: String = CfgFile.settings["url-api"] + "/meetings"
+	var url: String = CfgFile.settings["url-api"] + "meetings"
 
 	var json := JSON.new()
+	var datetime : String = Time.get_datetime_string_from_system()
+	print_debug(datetime)
 	var body: String = json.stringify(
-		{"date": Time.get_datetime_string_from_system()}
+		{"date": datetime }
 	)
 
 	var error: Error = %QRHTTPRequest.request(
@@ -35,13 +37,15 @@ func _on_http_request_request_completed(
 	var json := JSON.new()
 	var error: Error = json.parse(body.get_string_from_utf8())
 	var response_data: Variant = json.get_data()
-	print(response_data)
+	print_debug(response_data)
 
 	var meeting_id: int
 	if response_code == HTTPClient.RESPONSE_CREATED:
-		meeting_id = response_data.get("id")
+		meeting_id = response_data.get("id", null) as int
+		if not meeting_id: return
 	elif response_code == HTTPClient.RESPONSE_CONFLICT:
-		meeting_id = response_data.get("meeting").get("id")
+		meeting_id = response_data.get("meeting", null).get("id", null) as int
+		if not meeting_id: return
 	else:
 		var err: String = "Erro na requisição, código: %s" % response_code
 		printerr(err)
@@ -54,7 +58,7 @@ func _on_http_request_request_completed(
 	var route: String = "/meetings"
 	var params: String = "/%d" % meeting_id
 
-	var link: String = domain + route + params
+	var link: String = str(meeting_id)
 	%QRCodeRect.data = link
 	%QRCodeRect.show()
 

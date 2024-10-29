@@ -13,7 +13,7 @@ func _ready() -> void:
 		config.set_value(
 			"config", "url-web", "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 		)
-		config.set_value("config", "url-api", "")
+		config.set_value("config", "url-api", "https://bifrost-xi.vercel.app/")
 		config.set_value("config", "url-websocket", "")
 		config.set_value("config", "qr_timeout", 90)
 		config.save(CFG_FILE)
