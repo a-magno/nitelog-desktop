@@ -66,8 +66,5 @@ func _on_http_request_request_completed(
 func _on_open_login_toggled(value: bool) -> void:
 	if value == true:
 		%LoginAnimPlayer.play("transition_in")
-		%OpenLoginButton.text = " < "
 		return
-
-	%LoginAnimPlayer.play("transition_out")
-	%OpenLoginButton.text = " > "
+	%LoginAnimPlayer.play_backwards("transition_in")

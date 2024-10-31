@@ -35,3 +35,7 @@ project/assembly_name="NiteLog"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/qr_code/plugin.cfg", "res://addons/tattomoosa.spinner/plugin.cfg")
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
